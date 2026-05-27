@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Responsive Navbar</title>
+  <style>
+    /* Reset basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+    }
+
+    /* Navbar Main Container */
+    .navbar {
+      display: flex;
+      justify-content: space-between; /* Logo left, links right side push chesthundhi */
+      align-items: center;           /* Items ni vertically center chesthundhi */
+      padding: 1rem 3rem;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Premium soft shadow */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* Logo / Brand Styling */
+    .navbar-brand {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-brand span {
+      color: #007bef; /* Logo lo koncham variation kosam color spec */
+    }
+
+    .navbar-brand:hover {
+      color: #007bef;
+    }
+
+    /* Navigation Links */
+    .navbar-links {
+      display: flex;
+      gap: 2rem;            /* Items madhya exact spacing standard gap apply chesthundhi */
+      list-style: none;     /* Bullets drop chesthundhi */
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #64748b;       /* Soft dark grey color text */
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover & Active Effects */
+    .navbar-links a:hover, 
+    .navbar-links a.active {
+      color: #007bef;
+      background-color: #f0f7ff; /* Clean light blue hover container background */
+    }
+
+    /* CTA Button (Optional Styling for modern look) */
+    .navbar-btn {
+      background-color: #007bef;
+      color: #ffffff !important;
+    }
+
+    .navbar-btn:hover {
+      background-color: #0066c7 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">Dev<span>Space</span></a>
+    
+    <ul class="navbar-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="navbar-btn">Contact Us</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
