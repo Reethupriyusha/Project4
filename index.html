@@ -3,98 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Responsive Navbar</title>
+  <title>Responsive Flexbox & Grid</title>
+
   <style>
-    /* Reset basic styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background-color: #f4f6f9;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
     }
 
-    /* Navbar Main Container */
     .navbar {
+      background: #222;
+      color: white;
+      padding: 15px 20px;
+
       display: flex;
-      justify-content: space-between; /* Logo left, links right side push chesthundhi */
-      align-items: center;           /* Items ni vertically center chesthundhi */
-      padding: 1rem 3rem;
-      background-color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Premium soft shadow */
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
     }
 
-    /* Logo / Brand Styling */
-    .navbar-brand {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #1e293b;
-      text-decoration: none;
-      letter-spacing: -0.5px;
-      transition: color 0.3s ease;
-    }
-
-    .navbar-brand span {
-      color: #007bef; /* Logo lo koncham variation kosam color spec */
-    }
-
-    .navbar-brand:hover {
-      color: #007bef;
-    }
-
-    /* Navigation Links */
-    .navbar-links {
+    .navbar nav {
       display: flex;
-      gap: 2rem;            /* Items madhya exact spacing standard gap apply chesthundhi */
-      list-style: none;     /* Bullets drop chesthundhi */
+      gap: 20px;
     }
 
-    .navbar-links a {
+    .navbar a {
+      color: white;
       text-decoration: none;
-      color: #64748b;       /* Soft dark grey color text */
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      font-size: 18px;
     }
 
-    /* Hover & Active Effects */
-    .navbar-links a:hover, 
-    .navbar-links a.active {
-      color: #007bef;
-      background-color: #f0f7ff; /* Clean light blue hover container background */
+    #menuBtn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
     }
 
-    /* CTA Button (Optional Styling for modern look) */
-    .navbar-btn {
-      background-color: #007bef;
-      color: #ffffff !important;
+    .hero {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    .navbar-btn:hover {
-      background-color: #0066c7 !important;
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
     }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background: white;
+      width: 250px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    .card button {
+      padding: 10px 15px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background: #0056b3;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 30px;
+    }
+
+    .box {
+      background: tomato;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+
+      #menuBtn {
+        display: block;
+      }
+
+      .navbar nav {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .navbar nav.show {
+        display: flex;
+      }
+
+      .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero h2 {
+        font-size: 28px;
+      }
+
+      .grid-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <a href="#" class="navbar-brand">Dev<span>Space</span></a>
-    
-    <ul class="navbar-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact" class="navbar-btn">Contact Us</a></li>
-    </ul>
-  </nav>
+  <header class="navbar">
+    <h1>My Website</h1>
+
+    <button id="menuBtn">☰</button>
+
+    <nav id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Responsive Design</h2>
+    <p>Using HTML, CSS, JavaScript, Flexbox, Grid, DOM & ES6</p>
+  </section>
+
+  <section class="cards" id="cardContainer"></section>
+
+  <section class="grid-layout">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <div class="box">Box 4</div>
+  </section>
+
+  <script>
+ 
+    const cardsData = [
+      {
+        title: "HTML",
+        desc: "Learn structure of web pages."
+      },
+      {
+        title: "CSS",
+        desc: "Style your websites beautifully."
+      },
+      {
+        title: "JavaScript",
+        desc: "Make websites interactive."
+      },
+      {
+        title: "React",
+        desc: "Build modern UI applications."
+      }
+    ];
+
+    const cardContainer = document.getElementById("cardContainer");
+
+    cardsData.forEach(card => {
+
+      const cardElement = document.createElement("div");
+
+      cardElement.classList.add("card");
+
+      cardElement.innerHTML = `
+        <h3>${card.title}</h3>
+        <p>${card.desc}</p>
+        <button>Learn More</button>
+      `;
+
+      cardContainer.appendChild(cardElement);
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+  </script>
 
 </body>
 </html>
